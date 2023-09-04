@@ -12,7 +12,7 @@ function App() {
   return (
    <>
    <Router>
-   <Navbar sidebarWidth={sidebarWidth} setSidebarWidth={setSidebarWidth}/>
+   {/* <Navbar sidebarWidth={sidebarWidth} setSidebarWidth={setSidebarWidth}/> */}
    <Routes>
 
    <Route exact path='/' element={
@@ -22,6 +22,9 @@ function App() {
    }/> 
    <Route exact path='/login' element={
       <Login/>
+   }/> 
+   <Route exact path='/signup' element={
+      <SignUp/>
    }/> 
   
    </Routes>

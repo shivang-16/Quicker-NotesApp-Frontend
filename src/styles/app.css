@@ -2,6 +2,11 @@
     padding: 0;
     margin: 0;
 }
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .navbar{
     height: 65px;
     display: flex;
