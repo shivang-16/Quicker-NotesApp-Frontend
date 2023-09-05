@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import notebook from '../img/notebook.png';
 import axios from 'axios';
 import { server } from '../main';

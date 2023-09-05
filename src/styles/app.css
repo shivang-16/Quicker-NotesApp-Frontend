@@ -249,6 +249,15 @@ body{
    right: -15px;
    
   }
+  .delete-btn{
+    border: none;
+    background: none;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+  }
+  
   .profile-page-area{
     border: 2px solid red;
     width: 100vw;

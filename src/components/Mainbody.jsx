@@ -17,6 +17,7 @@ const Mainbody = () => {
   const [tag, setTag] = useState('')
   const [notes, setNotes] = useState([]);
   const [loader, setLoader] = useState(false);
+  const [refresh, setRefresh] = useState(false);
   const {isAuthenticated, setIsAuthenticated, isLoading, setIsLoading} = useContext(Context)
 
   const handleSubmit= async(e)=>{
@@ -34,6 +35,7 @@ const Mainbody = () => {
         })
          toast.success(data.message)
          setIsAuthenticated(true);
+         setRefresh(prev=>!prev)
          setIsLoading(false)
       } catch (error) {
         toast.error(error.response.data.message)
@@ -56,10 +58,21 @@ const Mainbody = () => {
    }
   }
 
+  const handleDelete = async(_id)=>{
+    try {
+      await axios.delete(`${server}/notes/${_id}`,{
+        withCredentials: true,
+       })
+       setRefresh(prev=>!prev)
+    } catch (error) {
+       toast.error(error.response.data.message)
+    }
+   
+  }
+
   useEffect(() => {
     getNotes();
-    
-  }, []);
+  }, [refresh]);
   
 
   return (
@@ -105,10 +118,12 @@ const Mainbody = () => {
           <form onSubmit={handleSubmit}>
           <div className="addNote addNote_title">
             <input type="text" className='textarea' placeholder='Title' value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
-            <input type="text" className='input-tag textarea' placeholder='Add tag' value={tag}  onChange={(e)=>{setTag(e.target.value)}}/>
+            <input type="text" className='input-tag textarea' placeholder='Add tag' value={tag}  onChange={(e)=>{setTag(e.target.value)}}
+            />
           </div>
           <div className="addNote">
-         <textarea name="" id="" cols="78" rows="5" className='textarea ' placeholder='Take a note' value={desc} onChange={(e)=>{setDesc(e.target.value)}}></textarea>
+         <textarea name="" id="" cols="68" rows="5" className='textarea ' placeholder='Take a note' value={desc} onChange={(e)=>{setDesc(e.target.value)}}></textarea>
+        
           </div>
           <div>
             <button type='submit' className='login-btn'>+ Add note</button>
@@ -127,7 +142,11 @@ const Mainbody = () => {
                      <p>{desc}</p>
                      <div className='tag'>
                      <p>{tag}</p>
+                   
                      </div>
+                     <button className='icon delete-btn' onClick={() => handleDelete(_id)}>
+            <img src={recycle} alt="Logo" />
+          </button>
                     
               </div>
             }):(
