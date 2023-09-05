@@ -1,5 +1,8 @@
 import React, { useState, useContext } from 'react';
 import notebook from '../img/notebook.png';
+import axios from 'axios';
+import { server } from '../main';
+import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom';
 import { Context } from '../main';
 
@@ -7,6 +10,20 @@ import { Context } from '../main';
 const Navbar= ({sidebarWidth, setSidebarWidth})=> {
   
   const {isAuthenticated, setIsAuthenticated} = useContext(Context)
+   
+  const handleLogout = async()=>{
+      try {
+        const {data} = await axios.get(`${server}/users/logout`,{
+         withCredentials: true,
+        })
+        toast.success(data.message)
+        setIsAuthenticated(false)
+      } catch (error) {
+        toast.error(error.response.data.message)
+        setIsAuthenticated(true);
+      }
+  }
+
 
   const handleOnClick=()=>{
     if(sidebarWidth === '70px')
@@ -34,7 +51,7 @@ const Navbar= ({sidebarWidth, setSidebarWidth})=> {
       </div>
       <div className="nav-right nav-box">
         {isAuthenticated === true ?(
-        <Link to="/login"><button className="detail-btn">Logout</button></Link>
+        <Link to="/login"><button className="detail-btn" onClick={handleLogout}>Logout</button></Link>
         ) : (
         <Link to="/login"><button className="detail-btn">Login</button></Link>
         )
