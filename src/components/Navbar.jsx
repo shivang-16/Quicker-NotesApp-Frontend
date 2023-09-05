@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import notebook from '../img/notebook.png';
 import { Link } from 'react-router-dom';
+import { Context } from '../main';
 
 
 const Navbar= ({sidebarWidth, setSidebarWidth})=> {
   
+  const {isAuthenticated, setIsAuthenticated} = useContext(Context)
+
   const handleOnClick=()=>{
     if(sidebarWidth === '70px')
        setSidebarWidth('300px')
@@ -30,8 +33,14 @@ const Navbar= ({sidebarWidth, setSidebarWidth})=> {
         <input type="search" className="search-bar" placeholder="Search" />
       </div>
       <div className="nav-right nav-box">
+        {isAuthenticated === true ?(
+        <Link to="/login"><button className="detail-btn">Logout</button></Link>
+        ) : (
         <Link to="/login"><button className="detail-btn">Login</button></Link>
-        <Link to="/signup"><button className="detail-btn">SignUp</button></Link>
+        )
+        }
+       
+
        
       </div>
     </div>
