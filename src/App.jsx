@@ -1,13 +1,14 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import Mainbody from './components/Mainbody'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
+import Profile from './components/Profile'
 import { Toaster } from 'react-hot-toast'
 import './styles/app.css'
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
-
+   
   return (
    <>
    <Router>
@@ -23,6 +24,9 @@ function App() {
    }/> 
    <Route exact path='/signup' element={
       <SignUp/>
+   }/> 
+   <Route exact path='/profile' element={
+      <Profile/>
    }/> 
   
    </Routes>

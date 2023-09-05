@@ -96,7 +96,14 @@ body{
     background-color: rgb(163, 187, 253);
     color: white;
   }
-  
+  .profile{
+    /* border: 2px solid red; */
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    cursor: pointer;
+    /* margin-left: 10px; */
+  }
   /*---------------- Main-Body------------------- */
   
   #main-body{
@@ -242,9 +249,31 @@ body{
    right: -15px;
    
   }
+  .profile-page-area{
+    border: 2px solid red;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+align-items: center;
+justify-content: center;
+  }
+  .profile-section{
+    border: 2px solid red;
+    padding: 20px;
+  }
   /* ------------ Login page ----------------- */
   .signup-box{
     border: 2px solid red;
   }
 
   
+  ::-webkit-scrollbar{
+    width: 10px;
+    
+  }
+
+  ::-webkit-scrollbar-thumb{
+    width: 10px;
+    background-color: rgb(104, 141, 148);
+    border-radius: 10px;
+  }

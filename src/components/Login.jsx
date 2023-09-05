@@ -30,6 +30,7 @@ const Login = () => {
      } catch (error) {
       console.log(error)
        toast.error(error.response.data.message);
+       setIsLoading(false)
        setIsAuthenticated(false);
      }
   }
@@ -46,9 +47,9 @@ const Login = () => {
         </div>
         <div className='login-content'>
           <form action="" onSubmit={handleSubmit}>
-          <input type="email" placeholder='Enter Your Email' value={email} onChange={(e)=> setEmail(e.target.value)}/>
-          <input type="password" placeholder='Enter Your Password' value={password} onChange={(e)=> setPassword(e.target.value)}/>
-          <button className='login-btn' type='submit'>Submit</button>
+          <input type="email" placeholder='Enter Your Email' value={email} onChange={(e)=> setEmail(e.target.value)} required/>
+          <input type="password" placeholder='Enter Your Password' value={password} onChange={(e)=> setPassword(e.target.value)} required/>
+          <button className='login-btn' type='submit'>Login</button>
           </form>
           <div className='signup-button'>
             <p>Do not have account?</p>
