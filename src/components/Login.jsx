@@ -5,13 +5,16 @@ import { server } from '../main'
 import '../styles/login.css'
 import { Link, Navigate } from 'react-router-dom'
 import {Context} from '../main'
+import Spinner from './Spinner'
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const {isAuthenticated, setIsAuthenticated} = useContext(Context)
+  const {isAuthenticated, setIsAuthenticated, isLoading, setIsLoading} = useContext(Context);
+
   const handleSubmit= async(e)=>{
      e.preventDefault()
+     setIsLoading(true)
      try {
        const { data } = await axios.post(`${server}/users/login`, {
          email, password
@@ -22,6 +25,7 @@ const Login = () => {
          withCredentials: true,
        });
        toast.success(data.message);
+       setIsLoading(false)
        setIsAuthenticated(true);
      } catch (error) {
       console.log(error)
@@ -34,6 +38,7 @@ const Login = () => {
 
   return (
    <>
+   {isLoading ? (<Spinner/>) : (
     <div className='login-box'>
       <div className='login-card'>
         <div className="login-header">
@@ -52,6 +57,8 @@ const Login = () => {
         </div>
       </div>
     </div>
+    )}
+   
    </>
   )
 }

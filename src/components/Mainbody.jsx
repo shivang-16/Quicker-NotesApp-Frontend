@@ -8,19 +8,24 @@ import recycle from '../img/delete.png';
 import pen from '../img/pen.png';
 import { server } from '../main';
 import { Context } from '../main';
-
+import Spinner from './Spinner';
 const Mainbody = () => {
   
   const [sidebarWidth, setSidebarWidth] = useState('70px');
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
+  const [tag, setTag] = useState('')
   const [notes, setNotes] = useState([]);
-  const {isAuthenticated, setIsAuthenticated} = useContext(Context)
+  const [loader, setLoader] = useState(false);
+  const {isAuthenticated, setIsAuthenticated, isLoading, setIsLoading} = useContext(Context)
+
   const handleSubmit= async(e)=>{
       e.preventDefault();
+      setIsLoading(true);
+      getNotes();
       try {
         const {data} = await axios.post(`${server}/notes/create`,{
-          title, desc
+          title, desc, tag
         },{
            headers:{
             "Content-Type": 'application/json'
@@ -29,6 +34,7 @@ const Mainbody = () => {
         })
          toast.success(data.message)
          setIsAuthenticated(true);
+         setIsLoading(false)
       } catch (error) {
         toast.error(error.response.data.message)
         setIsAuthenticated(false);
@@ -36,11 +42,12 @@ const Mainbody = () => {
   }
 
   const getNotes = async()=>{
-    
+    setLoader(true)
    try {
     const {data} = await axios.get(`${server}/notes/my`, {
       withCredentials: true,
     })
+    setLoader(false);
     console.log(data.notes);
     setNotes(data.notes);
     
@@ -96,26 +103,32 @@ const Mainbody = () => {
       <div className='notesArea'>
         <div className='addNoteBox'>
           <form onSubmit={handleSubmit}>
-          <div className="addNote">
+          <div className="addNote addNote_title">
             <input type="text" className='textarea' placeholder='Title' value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
+            <input type="text" className='input-tag textarea' placeholder='Add tag' value={tag}  onChange={(e)=>{setTag(e.target.value)}}/>
           </div>
           <div className="addNote">
-         <textarea name="" id="" cols="78" rows="5" className='textarea' placeholder='Take a note' value={desc} onChange={(e)=>{setDesc(e.target.value)}}></textarea>
+         <textarea name="" id="" cols="78" rows="5" className='textarea ' placeholder='Take a note' value={desc} onChange={(e)=>{setDesc(e.target.value)}}></textarea>
           </div>
           <div>
-            <button type='submit'>+ Add note</button>
-            <button>Clear</button>
+            <button type='submit' className='login-btn'>+ Add note</button>
+            <button className='login-btn'>Clear</button>
           </div>
           </form>
         </div>
-        <div className="notes-card-area">
+        {loader ? (<Spinner/>
+        ):(
+          <div className="notes-card-area">
           {
             isAuthenticated === true ? notes.map(( element)=>{
               const {title, desc , tag, _id} = element
               return <div className="note-card" key={_id}>
-                     <h2>{title}</h2>
+                     <h3>{title}</h3>
                      <p>{desc}</p>
+                     <div className='tag'>
                      <p>{tag}</p>
+                     </div>
+                    
               </div>
             }):(
               <p>notes not found</p>
@@ -123,6 +136,8 @@ const Mainbody = () => {
           }
          
         </div>
+        )}
+       
       </div>
     </main>
 

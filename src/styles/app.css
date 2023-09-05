@@ -6,6 +6,7 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 }
 .navbar{
     height: 65px;
@@ -171,6 +172,7 @@ body{
   .notesArea{
     /* border: 2px solid blue; */
     width: 100%;
+    overflow: auto;
   }
   .addNoteBox{
     /* border: 2px solid red; */
@@ -179,6 +181,14 @@ body{
     flex-direction: column;
    align-items: center;
   }
+  .addNote{
+    /* border: 2px solid red; */
+    width: 530px;
+  }
+ .addNote_title{
+  /* width: 530px; */
+  display: flex;
+ }
 
   .textarea{
     width: 530px;
@@ -190,18 +200,47 @@ body{
     margin: 5px;
     font-size: 17px;
   }
-
+  .input-tag{
+    width: 20%;
+    /* padding: 12px 8px; */
+   }
   .notes-card-area{
-    border: 2px solid red;
+
+    /* border: 2px solid red; */
     display: flex;
     flex-wrap: wrap;
     padding: 0px 20px;
+    width: 74%;
+    margin: 30px auto;
+    /* justify-content: space-evenly; */
   }
   .note-card{
-    border: 2px solid blue;
+    box-shadow: 0px 1px 3px rgb(170, 170, 170);
+    padding: 10px 20px 30px 20px;
+    border-radius: 10px;
     /* height: 200px; */
-    width: 300px;
+    width: 250px;
     margin: 20px;
+    position: relative;
+  }
+  .note-card h3{
+    border-bottom: 1px solid rgb(218, 218, 218);
+    margin-bottom: 10px;
+  }
+  .note-card p{
+    
+  }
+  .tag{
+   
+   background-color: rgb(59, 74, 243);
+   border-radius: 10px;
+   padding: 2px 8px ;
+   color: white;
+   display: inline-block;
+   position: absolute;
+   top: -8px;
+   right: -15px;
+   
   }
   /* ------------ Login page ----------------- */
   .signup-box{
