@@ -3,6 +3,7 @@ import { Context } from '../main'
 import Spinner from './Spinner'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
+import profileImg from '../img/profile.png'
 const Profile = () => {
  
     const {profile, isLoading} = useContext(Context)
@@ -17,6 +18,7 @@ const Profile = () => {
    {isLoading? (<Spinner/>
    ) : (
     profile ? ( <div className='profile-section'>
+      <img src={profileImg} alt="" />
     <h3>{profile.name}</h3>
     <h4>{profile.email}</h4>
     <p>{profile.createdAt}</p>

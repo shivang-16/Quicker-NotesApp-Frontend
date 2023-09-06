@@ -150,10 +150,7 @@ body{
     overflow: hidden;
   }
   
-  .sidebar:hover{
-    width: 300px !important;
-    
-  }
+  
   
   .icon{
     width: 45px;
@@ -246,7 +243,7 @@ body{
  
   
   .notes-card-area{
-
+/* border: 2px solid red; */
     
     padding: 0px auto;
     width: 74%;
@@ -257,7 +254,17 @@ body{
     flex-wrap: wrap;
     /* display: block; */
     align-items: start;
+    justify-content: center;
   
+  }
+  .notes-card-wrapper{
+    border: 2px solid rgb(0, 60, 255);
+    display: inline;
+   display: flex;
+   flex-wrap: wrap;
+   align-items: flex-start;
+    margin: auto;
+    justify-content: center;
   }
   .note-card{
     box-shadow: 0px 0px 2px rgb(170, 170, 170);
@@ -268,7 +275,7 @@ body{
     width: 298px;
     margin: 10px;
     position: relative;
-    background-color: rgb(248, 253, 255);
+    background-color:white;
     
   }
   .note-card h3{
@@ -276,11 +283,8 @@ body{
     margin-bottom: 8px;
     padding-bottom: 6px;
   }
-  .note-card p{
-    
-  }
+
   .tag{
-   
    background-color: rgb(84, 103, 171);
    border-radius: 10px;
    padding: 2px 8px ;
@@ -288,8 +292,7 @@ body{
    display: inline-block;
    position: absolute;
    bottom: 8px;
-   left: 8px;
-   
+   left: 16px;
   }
   .card-btn{
     border: none;
@@ -310,9 +313,33 @@ body{
 align-items: center;
 justify-content: center;
   }
-  .profile-section{
-    /* border: 2px solid red; */
-    padding: 20px;
+  .profile-section {
+    position: relative;
+    top: -100px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 50px 0px ;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .profile-section h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .profile-section h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #666;
+  }
+  
+  .profile-section p {
+    font-size: 14px;
+    color: #888;
   }
   /* ------------ Login page ----------------- */
   .signup-box{
@@ -352,7 +379,6 @@ justify-content: center;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-
   text-align: center;
   position: relative;
 }
