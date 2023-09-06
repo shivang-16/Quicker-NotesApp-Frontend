@@ -8,7 +8,7 @@ export const Context = createContext({isAuthenticated: false})
 const Appwrapper =()=>{
   const [isAuthenticated , setIsAuthenticated] = useState(false)
   const [isLoading , setIsLoading] = useState(false)
-  const [profile, setProfile] = useState('')
+  const [profile, setProfile] = useState({})
   return (
    <Context.Provider value={{ 
     isAuthenticated,

@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import notesimg from '../img/notes.png';
 import recycle from '../img/delete.png';
 import pen from '../img/pen.png';
 import { server } from '../main';
 import { Context } from '../main';
 import Spinner from './Spinner';
-import profileImg from '../img/profile.png'
+
+
 const Mainbody = () => {
   
   const [sidebarWidth, setSidebarWidth] = useState('70px');
@@ -92,7 +94,6 @@ const Mainbody = () => {
   };
   const handleEditSubmit = async (e) => {
     e.preventDefault();
-   setIsLoading(true)
     try {
       await axios.put(`${server}/notes/${editNote._id}`, editNote, {
         withCredentials: true,
@@ -101,11 +102,11 @@ const Mainbody = () => {
       toast.success('Note updated successfully');
    
       setEditNote({ _id: '', title: '', desc: '', tag: '' });
-      setIsLoading(false)
+
       setRefresh((prev) => !prev);
     } catch (error) {
       toast.error(error.response.data.message);
-      setIsLoading(false)
+     
     }
   };
   
@@ -123,25 +124,8 @@ const Mainbody = () => {
     <>
     <Navbar sidebarWidth={sidebarWidth} setSidebarWidth={setSidebarWidth}/>
     <main id='main-body'>
-      <div className="sidebar" style={{width: sidebarWidth}}>
-        <div className='box1'>
-          <div className='icon side-active'>
-           <img src={notesimg} alt="logo" />
-          </div>
-          <div className='notes box-active'>
-            <p>Notes</p>
-          </div>
-        </div>
-        <div className='box1'>
-          <div className='icon'>
-            <img src={profileImg} alt="Logo" />
-          </div>
-          <div className='notes'>
-            <p>My Profile</p>
-          </div>
-        </div>
-     
-      </div>
+       <Sidebar sidebarWidth={sidebarWidth}/>
+ 
       <div className='notesArea'>
         <div className='addNoteBox'>
           <form onSubmit={handleSubmit}>
@@ -188,8 +172,8 @@ const Mainbody = () => {
          
         </div>
         )}
-        {isLoading ? ( <Spinner/>
-        ):(  editNote._id && (
+
+        {editNote._id && (
             <div className="modal-container">
             <div className="modal-content">
               <span className="modal-close" onClick={handleCancelEdit}>
@@ -218,7 +202,7 @@ const Mainbody = () => {
                  placeholder="Edit Description"
                />
                <div>
-               <button type="submit" className='login-btn'>Save</button>
+               <button type="submit" disabled={isLoading} className='login-btn'>Update</button>
                <button className='login-btn' onClick={handleCancelEdit}>Cancel</button>
                </div>
              </form>
@@ -226,7 +210,7 @@ const Mainbody = () => {
            </div>
            </div>
          )
-        )}
+        }
   
 
       </div>

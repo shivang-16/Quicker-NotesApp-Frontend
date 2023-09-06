@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import { Context } from '../main'
 import Spinner from './Spinner'
 import Navbar from './Navbar'
-
+import Sidebar from './Sidebar'
 const Profile = () => {
  
     const {profile, isLoading} = useContext(Context)
@@ -10,6 +10,9 @@ const Profile = () => {
   return (
    <>
      <Navbar/>
+     <main id='main-body'>
+       <Sidebar/>
+   
    <div className='profile-page-area'>
    {isLoading? (<Spinner/>
    ) : (
@@ -21,6 +24,7 @@ const Profile = () => {
 ):("Unable to fetch profile page")
    )}
    </div>
+   </main>
    </>
   )
 }
