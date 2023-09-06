@@ -242,9 +242,7 @@ body{
    }
  
   
-  .notes-card-area{
-/* border: 2px solid red; */
-    
+  .notes-card-area{   
     padding: 0px auto;
     width: 74%;
     margin: 30px auto;

@@ -90,7 +90,7 @@ const Navbar= ({sidebarWidth, setSidebarWidth})=> {
         <img src={profileImg} alt=""  style={{height:'100%', width: '100%'}}/>
         </div>
         </Link>
-        <Link to="/login"><button className="detail-btn" onClick={handleLogout}>Logout</button></Link>
+       <button className="detail-btn" onClick={handleLogout}>Logout</button>
         </div>
         ) : (
         <Link to="/login"><button className="detail-btn" onClick={handleLogin}>Login</button></Link>

@@ -111,7 +111,6 @@ const Mainbody = () => {
   };
   
   const handleCancelEdit = () => {
-    // Clear the editNote state
     setEditNote({ _id: '', title: '', desc: '', tag: '' });
   };
   
@@ -166,7 +165,7 @@ const Mainbody = () => {
                     
               </div>
             }):(
-              <p>notes not found</p>
+              <h4>Login to your account to see your notes</h4>
             )
           }
          
