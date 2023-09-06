@@ -54,12 +54,17 @@ const Navbar= ({sidebarWidth, setSidebarWidth})=> {
           <div className="line"></div>
           <div className="line"></div>
         </div>
+        <Link to={'/'}>
+        <div className='brand'>
         <div className="logo-img">
           <img src={notebook} alt="Notebook" />
         </div>
         <div className="logo-txt">
           <h1>Quicker</h1>
         </div>
+        </div>
+        </Link>
+      
       </div>
       <div className="nav-mid nav-box">
         <input type="search" className="search-bar" placeholder="Search" />

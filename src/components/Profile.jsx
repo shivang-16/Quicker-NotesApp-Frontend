@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import { Context } from '../main'
 import Spinner from './Spinner'
+import Navbar from './Navbar'
 
 const Profile = () => {
  
@@ -8,6 +9,7 @@ const Profile = () => {
    
   return (
    <>
+     <Navbar/>
    <div className='profile-page-area'>
    {isLoading? (<Spinner/>
    ) : (

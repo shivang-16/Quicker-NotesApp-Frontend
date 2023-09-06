@@ -29,6 +29,7 @@ const SignUp = () => {
         console.log(error)
         toast.error(error.response.data.message);
         setIsAuthenticated(false)
+        setIsLoading(false)
       }
     }
     if(isAuthenticated) return <Navigate to={'/'}/>

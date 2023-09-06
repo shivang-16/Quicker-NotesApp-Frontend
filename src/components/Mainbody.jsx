@@ -9,6 +9,7 @@ import pen from '../img/pen.png';
 import { server } from '../main';
 import { Context } from '../main';
 import Spinner from './Spinner';
+import profileImg from '../img/profile.png'
 const Mainbody = () => {
   
   const [sidebarWidth, setSidebarWidth] = useState('70px');
@@ -18,6 +19,8 @@ const Mainbody = () => {
   const [notes, setNotes] = useState([]);
   const [loader, setLoader] = useState(false);
   const [refresh, setRefresh] = useState(false);
+  const [editNote, setEditNote] = useState({ _id: '', title: '', desc: '', tag: '' });
+
   const {isAuthenticated, setIsAuthenticated, isLoading, setIsLoading} = useContext(Context)
 
   const handleSubmit= async(e)=>{
@@ -34,12 +37,17 @@ const Mainbody = () => {
            withCredentials: true,
         })
          toast.success(data.message)
+         setTitle('')
+         setDesc('')
+         setTag('')
+
          setIsAuthenticated(true);
          setRefresh(prev=>!prev)
          setIsLoading(false)
       } catch (error) {
         toast.error(error.response.data.message)
         setIsAuthenticated(false);
+        setIsLoading(false)
       }
   }
 
@@ -55,10 +63,12 @@ const Mainbody = () => {
     
    } catch (error) {
     console.log(error)
+    setLoader(false)
    }
   }
 
   const handleDelete = async(_id)=>{
+    confirm("Are you sure want to delete this note")
     try {
       await axios.delete(`${server}/notes/${_id}`,{
         withCredentials: true,
@@ -70,6 +80,40 @@ const Mainbody = () => {
    
   }
 
+  const handleUpdate = (_id) => {
+    const noteToEdit = notes.find((note) => note._id === _id);
+    if (noteToEdit) {
+      setEditNote({
+        _id: noteToEdit._id,
+        title: noteToEdit.title,
+        desc: noteToEdit.desc,
+        tag: noteToEdit.tag,
+      });
+    }
+  };
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    // Make an axios request to update the note on the server
+    try {
+      await axios.put(`${server}/notes/${editNote._id}`, editNote, {
+        withCredentials: true,
+      });
+      // Optionally, display a success message.
+      toast.success('Note updated successfully');
+      // Clear the editNote state
+      setEditNote({ _id: '', title: '', desc: '', tag: '' });
+      // Refresh the notes
+      setRefresh((prev) => !prev);
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
+  
+  const handleCancelEdit = () => {
+    // Clear the editNote state
+    setEditNote({ _id: '', title: '', desc: '', tag: '' });
+  };
+  
   useEffect(() => {
     getNotes();
   }, [refresh]);
@@ -90,28 +134,13 @@ const Mainbody = () => {
         </div>
         <div className='box1'>
           <div className='icon'>
-            <img src={reminder} alt="Logo" />
+            <img src={profileImg} alt="Logo" />
           </div>
           <div className='notes'>
-            <p>Reminder</p>
+            <p>My Profile</p>
           </div>
         </div>
-        <div className='box1'>
-          <div className='icon'>
-            <img src={pen} alt="Logo" />
-          </div>
-          <div className='notes'>
-            <p>Edit Notes</p>
-          </div>
-        </div>
-        <div className='box1'>
-          <div className='icon'>
-            <img src={recycle} alt="Logo" />
-          </div>
-          <div className='notes'>
-            <p>Recycle Bin</p>
-          </div>
-        </div>
+     
       </div>
       <div className='notesArea'>
         <div className='addNoteBox'>
@@ -126,7 +155,7 @@ const Mainbody = () => {
         
           </div>
           <div>
-            <button type='submit' className='login-btn'>+ Add note</button>
+            <button type='submit' disabled={isLoading} className='login-btn'>+ Add note</button>
             <button className='login-btn'>Clear</button>
           </div>
           </form>
@@ -144,9 +173,12 @@ const Mainbody = () => {
                      <p>{tag}</p>
                    
                      </div>
-                     <button className='icon delete-btn' onClick={() => handleDelete(_id)}>
-            <img src={recycle} alt="Logo" />
-          </button>
+                <button className='icon card-btn delete-btn' onClick={() => handleDelete(_id)}>
+                  <img src={recycle} alt="Logo" />
+                </button>
+                <button className='icon card-btn edit-btn' onClick={() => handleUpdate(_id)}>
+                  <img src={pen} alt="Logo" />
+                </button>
                     
               </div>
             }):(
@@ -156,7 +188,39 @@ const Mainbody = () => {
          
         </div>
         )}
-       
+       {editNote._id && (
+   <div className="modal-container">
+   <div className="modal-content">
+     <span className="modal-close" onClick={handleCancelEdit}>
+       &times;
+     </span>
+     <h2>Edit Note</h2>
+   
+    <form onSubmit={handleEditSubmit}>
+      <input
+        type="text"
+        value={editNote.title}
+        onChange={(e) => setEditNote({ ...editNote, title: e.target.value })}
+        placeholder="Edit Title"
+      />
+      <textarea
+        value={editNote.desc}
+        onChange={(e) => setEditNote({ ...editNote, desc: e.target.value })}
+        placeholder="Edit Description"
+      />
+      <input
+        type="text"
+        value={editNote.tag}
+        onChange={(e) => setEditNote({ ...editNote, tag: e.target.value })}
+        placeholder="Edit Tag"
+      />
+      <button type="submit">Save</button>
+      <button onClick={handleCancelEdit}>Cancel</button>
+    </form>
+  </div>
+  </div>
+)}
+
       </div>
     </main>
 
