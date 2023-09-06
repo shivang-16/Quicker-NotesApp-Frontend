@@ -68,6 +68,7 @@ const Mainbody = () => {
    }
   }
 
+
   const handleDelete = async(_id)=>{
     confirm("Are you sure want to delete this note")
     try {
@@ -92,6 +93,8 @@ const Mainbody = () => {
       });
     }
   };
+
+
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -113,6 +116,7 @@ const Mainbody = () => {
   const handleCancelEdit = () => {
     setEditNote({ _id: '', title: '', desc: '', tag: '' });
   };
+  
   
   useEffect(() => {
     getNotes();

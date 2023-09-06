@@ -12,13 +12,13 @@ const Profile = () => {
    <>
      <Navbar/>
      <main id='main-body'>
-       <Sidebar/>
+     <Sidebar/>
    
    <div className='profile-page-area'>
    {isLoading? (<Spinner/>
    ) : (
     profile ? ( <div className='profile-section'>
-      <img src={profileImg} alt="" />
+      <img src={profileImg} alt=""/>
     <h3>{profile.name}</h3>
     <h4>{profile.email}</h4>
     <p>{profile.createdAt}</p>

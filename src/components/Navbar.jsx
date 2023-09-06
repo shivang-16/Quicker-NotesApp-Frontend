@@ -24,7 +24,9 @@ const Navbar= ({sidebarWidth, setSidebarWidth})=> {
         setIsLoading(false)
       } catch (error) {
         setIsAuthenticated(false)
+        toast.error(error.response.data.message)
         setProfile({});
+        setIsLoading(false)
       }
   }
 
@@ -77,9 +79,7 @@ const Navbar= ({sidebarWidth, setSidebarWidth})=> {
         </Link>
       
       </div>
-      <div className="nav-mid nav-box">
-        <input type="search" className="search-bar" placeholder="Search" />
-      </div>
+     
       <div className="nav-right nav-box">
         {isAuthenticated === true ?(
           <div className='nav-right-content'>
