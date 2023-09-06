@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import Navbar from './Navbar';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import reminder from '../img/notification.png';
 import notesimg from '../img/notes.png';
 import recycle from '../img/delete.png';
 import pen from '../img/pen.png';
@@ -93,19 +92,20 @@ const Mainbody = () => {
   };
   const handleEditSubmit = async (e) => {
     e.preventDefault();
-    // Make an axios request to update the note on the server
+   setIsLoading(true)
     try {
       await axios.put(`${server}/notes/${editNote._id}`, editNote, {
         withCredentials: true,
       });
-      // Optionally, display a success message.
+   
       toast.success('Note updated successfully');
-      // Clear the editNote state
+   
       setEditNote({ _id: '', title: '', desc: '', tag: '' });
-      // Refresh the notes
+      setIsLoading(false)
       setRefresh((prev) => !prev);
     } catch (error) {
       toast.error(error.response.data.message);
+      setIsLoading(false)
     }
   };
   
@@ -151,7 +151,7 @@ const Mainbody = () => {
             />
           </div>
           <div className="addNote">
-         <textarea name="" id="" cols="68" rows="5" className='textarea ' placeholder='Take a note' value={desc} onChange={(e)=>{setDesc(e.target.value)}}></textarea>
+         <textarea name="" id="" rows="5" className='textarea ' placeholder='Take a note' value={desc} onChange={(e)=>{setDesc(e.target.value)}}></textarea>
         
           </div>
           <div>
@@ -188,38 +188,46 @@ const Mainbody = () => {
          
         </div>
         )}
-       {editNote._id && (
-   <div className="modal-container">
-   <div className="modal-content">
-     <span className="modal-close" onClick={handleCancelEdit}>
-       &times;
-     </span>
-     <h2>Edit Note</h2>
-   
-    <form onSubmit={handleEditSubmit}>
-      <input
-        type="text"
-        value={editNote.title}
-        onChange={(e) => setEditNote({ ...editNote, title: e.target.value })}
-        placeholder="Edit Title"
-      />
-      <textarea
-        value={editNote.desc}
-        onChange={(e) => setEditNote({ ...editNote, desc: e.target.value })}
-        placeholder="Edit Description"
-      />
-      <input
-        type="text"
-        value={editNote.tag}
-        onChange={(e) => setEditNote({ ...editNote, tag: e.target.value })}
-        placeholder="Edit Tag"
-      />
-      <button type="submit">Save</button>
-      <button onClick={handleCancelEdit}>Cancel</button>
-    </form>
-  </div>
-  </div>
-)}
+        {isLoading ? ( <Spinner/>
+        ):(  editNote._id && (
+            <div className="modal-container">
+            <div className="modal-content">
+              <span className="modal-close" onClick={handleCancelEdit}>
+                &times;
+              </span>
+              <h2>Edit Note</h2>
+              <div className='addNoteBox'>
+             <form onSubmit={handleEditSubmit}>
+             <div className="addNote addNote_title">
+               <input
+                 type="text" className='textarea'
+                 value={editNote.title}
+                 onChange={(e) => setEditNote({ ...editNote, title: e.target.value })}
+                 placeholder="Edit Title"
+               />
+               <input
+                 type="text" className='textarea input-tag'
+                 value={editNote.tag}
+                 onChange={(e) => setEditNote({ ...editNote, tag: e.target.value })}
+                 placeholder="Edit Tag"
+               />
+               </div>
+               <textarea className='textarea'
+                 value={editNote.desc}
+                 onChange={(e) => setEditNote({ ...editNote, desc: e.target.value })}
+                 placeholder="Edit Description"
+               />
+               <div>
+               <button type="submit" className='login-btn'>Save</button>
+               <button className='login-btn' onClick={handleCancelEdit}>Cancel</button>
+               </div>
+             </form>
+             </div>
+           </div>
+           </div>
+         )
+        )}
+  
 
       </div>
     </main>
