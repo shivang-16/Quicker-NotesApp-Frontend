@@ -82,7 +82,7 @@ const Mainbody = () => {
   };
 
   const handleDelete = async (_id) => {
-    if (window.confirm("Are you sure you want to Logout?")) {
+    if (window.confirm("Are you sure you want to Delete?")) {
     try {
       await axios.delete(`${server}/notes/${_id}`, {
         withCredentials: true,
