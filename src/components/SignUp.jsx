@@ -10,7 +10,7 @@ const SignUp = () => {
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
    const {isAuthenticated, setIsAuthenticated, isLoading, setIsLoading} = useContext(Context)
-   const handleSubmit= async(e)=>{
+   const handleSignUp= async(e)=>{
       e.preventDefault()
       setIsLoading(true)
       try {
@@ -26,37 +26,37 @@ const SignUp = () => {
         setIsLoading(false)
         setIsAuthenticated(true);
       } catch (error) {
-        console.log(error)
         toast.error(error.response.data.message);
         setIsAuthenticated(false)
         setIsLoading(false)
       }
     }
     if(isAuthenticated) return <Navigate to={'/'}/>
+
      return (
      <>
      <main id='main-body'>
-   {isLoading ? (<Spinner/>) : (
+   {
     <div className='login-box'>
     <div className='login-card'>
       <div className="login-header">
         <h1>Signup</h1>
       </div>
       <div className='login-content'>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSignUp}>
         <input type="text" placeholder='Enter Your Name' value={name} onChange={(e)=>setName(e.target.value)} required/>
         <input type="email" placeholder='Enter Your Email' value={email} onChange={(e)=>setEmail(e.target.value)} required/>
         <input type="password" placeholder='Enter Your Password' value={password} onChange={(e)=>setPassword(e.target.value)} required/>
-        <button className='login-btn' type='submit'>Sign Up</button>
+        <button className='login-btn' disabled={isLoading} type='submit'>Sign Up</button>
         </form>
         <div className='signup-button'>
           <p>Already have account?</p>
-          <Link to="/login"><button className='login-btn'>Login</button></Link>
+          <Link to="/login"><button className='login-btn' disabled={isLoading}>Login</button></Link>
         </div>
       </div>
     </div>
   </div>
-   )}
+   }
    </main>
   </>
   )

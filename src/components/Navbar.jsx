@@ -3,25 +3,26 @@ import notebook from '../img/notebook.png';
 import axios from 'axios';
 import { server } from '../main';
 import toast from 'react-hot-toast'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Context } from '../main';
 import profileImg from '../img/profile.png'
 
-const Navbar= ({sidebarWidth, setSidebarWidth})=> {
+const Navbar= ()=> {
   
-  const {isAuthenticated, setIsAuthenticated, setProfile, setIsLoading} = useContext(Context)
+  const {isAuthenticated, setIsAuthenticated, setProfile, setIsLoading, sidebarWidth, setSidebarWidth} = useContext(Context)
   
-  
+ 
   const handleProfile = async()=>{
     setIsLoading(true)
       try {
         const {data} = await axios.get(`${server}/users/me`,{
           withCredentials: true,
         })
-        console.log(data.user)
         setProfile(data.user);
+        
         setIsAuthenticated(true)
         setIsLoading(false)
+       
       } catch (error) {
         setIsAuthenticated(false)
         toast.error(error.response.data.message)
@@ -29,7 +30,7 @@ const Navbar= ({sidebarWidth, setSidebarWidth})=> {
         setIsLoading(false)
       }
   }
-
+  const navigate = useNavigate()
   const handleLogout = async()=>{
     confirm("Are you sure you want to logout?")
       try {
@@ -37,6 +38,7 @@ const Navbar= ({sidebarWidth, setSidebarWidth})=> {
          withCredentials: true,
         })
         toast.success(data.message)
+        navigate('/login')
         setIsAuthenticated(false)
       } catch (error) {
         toast.error(error.response.data.message)
@@ -48,7 +50,7 @@ const Navbar= ({sidebarWidth, setSidebarWidth})=> {
     setIsLoading(false)
   }
 
-  const handleOnClick=()=>{
+  const handleBurger=()=>{
     if(sidebarWidth === '70px')
        setSidebarWidth('300px')
     else
@@ -62,7 +64,7 @@ const Navbar= ({sidebarWidth, setSidebarWidth})=> {
     return (
     <div className="navbar">
       <div className="nav-left nav-box">
-        <div className="burger" onClick={handleOnClick}>
+        <div className="burger" onClick={handleBurger}>
           <div className="line"></div>
           <div className="line"></div>
           <div className="line"></div>

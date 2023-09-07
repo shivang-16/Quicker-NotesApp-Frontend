@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import axios from 'axios';
@@ -13,16 +12,16 @@ import Spinner from './Spinner';
 
 const Mainbody = () => {
   
-  const [sidebarWidth, setSidebarWidth] = useState('70px');
+ 
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
   const [tag, setTag] = useState('')
   const [notes, setNotes] = useState([]);
   const [loader, setLoader] = useState(false);
-  const [refresh, setRefresh] = useState(false);
   const [editNote, setEditNote] = useState({ _id: '', title: '', desc: '', tag: '' });
 
-  const {isAuthenticated, setIsAuthenticated, isLoading, setIsLoading} = useContext(Context)
+  const {isAuthenticated, setIsAuthenticated, isLoading, setIsLoading, refresh, setRefresh,sidebarWidth, setSidebarWidth} = useContext(Context)
+
 
   const handleSubmit= async(e)=>{
       e.preventDefault();
@@ -59,11 +58,9 @@ const Mainbody = () => {
       withCredentials: true,
     })
     setLoader(false);
-    console.log(data.notes);
     setNotes(data.notes);
     
    } catch (error) {
-    console.log(error)
     setLoader(false)
    }
   }
@@ -79,7 +76,6 @@ const Mainbody = () => {
     } catch (error) {
        toast.error(error.response.data.message)
     }
-   
   }
 
   const handleUpdate = (_id) => {
@@ -117,6 +113,12 @@ const Mainbody = () => {
     setEditNote({ _id: '', title: '', desc: '', tag: '' });
   };
   
+
+  const handleClear = () => {
+    setTitle('');
+    setDesc('');
+    setTag('');
+  };
   
   useEffect(() => {
     getNotes();
@@ -138,12 +140,12 @@ const Mainbody = () => {
             />
           </div>
           <div className="addNote">
-         <textarea name="" id="" rows="5" className='textarea ' placeholder='Take a note' value={desc} onChange={(e)=>{setDesc(e.target.value)}}></textarea>
+         <textarea name="" id="" rows="5" className='textarea' placeholder='Take a note' value={desc} onChange={(e)=>{setDesc(e.target.value)}}></textarea>
         
           </div>
-          <div>
-            <button type='submit' disabled={isLoading} className='login-btn'>+ Add note</button>
-            <button className='login-btn'>Clear</button>
+          <div style={{display:'flex', alignItems:"center"}}>
+            <button type='submit' disabled={isLoading || !isAuthenticated} className='login-btn'>+ Add note</button>
+            <div style={{display: "inline-block", padding:"8px 10px", backgroundColor:'brown'}} className='login-btn' onClick={handleClear}>Clear</div>
           </div>
           </form>
         </div>

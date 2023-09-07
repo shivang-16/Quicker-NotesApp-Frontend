@@ -9,6 +9,8 @@ const Appwrapper =()=>{
   const [isAuthenticated , setIsAuthenticated] = useState(false)
   const [isLoading , setIsLoading] = useState(false)
   const [profile, setProfile] = useState({})
+  const [refresh, setRefresh] = useState(false);
+  const [sidebarWidth, setSidebarWidth] = useState('70px');
   return (
    <Context.Provider value={{ 
     isAuthenticated,
@@ -16,7 +18,11 @@ const Appwrapper =()=>{
     isLoading,
     setIsLoading,
     profile, 
-    setProfile
+    setProfile,
+    refresh, 
+    setRefresh,
+    sidebarWidth, 
+    setSidebarWidth
   }}>
     <App/>
     </Context.Provider>

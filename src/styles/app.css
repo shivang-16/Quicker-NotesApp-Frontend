@@ -45,13 +45,11 @@ body{
     border: 1px solid rgb(57, 57, 57);
     width: 18px;
     margin: 2px;
-    /* border-radius: px; */
   }
   .brand{
     display: flex;
   }
   .logo-img{
-    /* border: 2px solid red; */
      width: 40px;
      height: 40px;
      margin-right: 3px;
@@ -61,7 +59,6 @@ body{
     height: 100%;
   }
   .nav-mid{
-    /* border: 2px solid green; */
     height: inherit;
     display: flex;
     align-items: center;
@@ -103,7 +100,6 @@ body{
   
   }
   .detail-btn{
-    /* border: 2px solid red; */
     margin: 3px;
     padding: 5px 9px 5px 9px;
     cursor: pointer;
@@ -117,7 +113,6 @@ body{
     color: white;
   }
   .profile{
-    /* border: 2px solid red; */
     display: flex;
     height: 50px;
     width: 50px;
@@ -125,8 +120,9 @@ body{
     cursor: pointer;
     align-items: center;
     font-weight: bold;
-    /* margin-left: 10px; */
   }
+
+
   /*---------------- Main-Body------------------- */
   
   #main-body{
@@ -135,7 +131,6 @@ body{
     margin: auto;
     position: relative;
     top: 65px;
-    /* overflow: hidden; */
     display: flex;
   }
   .sidebar{
@@ -179,7 +174,6 @@ body{
     background-color: rgb(202, 212, 239);
   }
   .box1{
-    /* border: 2px solid red; */
    display: inline-block;
    height: 60px;
    cursor: pointer;
@@ -205,12 +199,10 @@ body{
     border-radius: 40px;
   }
   .notesArea{
-    /* border: 2px solid blue; */
     width: 100%;
     overflow: auto;
   }
   .addNoteBox{
-    /* border: 2px solid red; */
     width: 100%;
     padding-top: 30px;
     display: flex;
@@ -218,16 +210,13 @@ body{
    align-items: center;
   }
   .addNote{
-    /* border: 2px solid red; */
     width: 100%;
    
   }
 
 
   .textarea{
-    /* width: 530px; */
     width: 93%;
-
     border-radius: 8px;
     padding: 12px 10px ;
     outline: none;
@@ -237,14 +226,12 @@ body{
     font-size: 17px;
   }
   .addNote_title{
-    /* width: 560px; */
     width: 100%;
     display: flex;
     
    }
   .input-tag{
     width: 20%;
-    /* padding: 12px 8px; */
    }
  
   
@@ -256,7 +243,6 @@ body{
    display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
-    /* display: block; */
     align-items: start;
     justify-content: center;
   
@@ -310,7 +296,6 @@ body{
     right: 35px;
   }
   .profile-page-area{
-    /* border: 2px solid red; */
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -345,6 +330,8 @@ justify-content: center;
     font-size: 14px;
     color: #888;
   }
+
+
   /* ------------ Login page ----------------- */
   .signup-box{
     border: 2px solid red;
@@ -352,13 +339,13 @@ justify-content: center;
 
   
   ::-webkit-scrollbar{
-    width: 10px;
+    width: 5px;
     
   }
 
   ::-webkit-scrollbar-thumb{
     width: 10px;
-    background-color: rgb(104, 141, 148);
+    background-color: rgb(172, 172, 172);
     border-radius: 10px;
   }
 
@@ -378,7 +365,6 @@ justify-content: center;
 
 /* CSS for the modal content */
 .modal-content {
-  /* border: 2px solid red; */
   background-color: white;
   padding: 20px;
   border-radius: 8px;
@@ -408,6 +394,7 @@ justify-content: center;
 }
 :disabled{
   background-color: gray;
+  opacity: 0.3;
 }
 
 
@@ -459,7 +446,6 @@ justify-content: center;
     font-size: 14px;
   }
   .logo-img{
-    /* border: 2px solid red; */
      width: 35px;
      height: 35px;
      margin-right: 3px;

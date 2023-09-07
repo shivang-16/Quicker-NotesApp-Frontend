@@ -12,7 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const {isAuthenticated, setIsAuthenticated, isLoading, setIsLoading} = useContext(Context);
 
-  const handleSubmit= async(e)=>{
+  const handleLogin= async(e)=>{
      e.preventDefault()
      setIsLoading(true)
      try {
@@ -28,7 +28,6 @@ const Login = () => {
        setIsLoading(false)
        setIsAuthenticated(true);
      } catch (error) {
-      console.log(error)
        toast.error(error.response.data.message);
        setIsLoading(false)
        setIsAuthenticated(false);
@@ -47,14 +46,14 @@ const Login = () => {
           <h1>Login</h1>
         </div>
         <div className='login-content'>
-          <form action="" onSubmit={handleSubmit}>
+          <form action="" onSubmit={handleLogin}>
           <input type="email" placeholder='Enter Your Email' value={email} onChange={(e)=> setEmail(e.target.value)} required/>
           <input type="password" placeholder='Enter Your Password' value={password} onChange={(e)=> setPassword(e.target.value)} required/>
           <button className='login-btn' type='submit'>Login</button>
           </form>
           <div className='signup-button'>
             <p>Do not have account?</p>
-            <Link to="/signup"><button className='login-btn'>SignUp</button></Link>
+            <Link to="/signup"><button className='login-btn' >SignUp</button></Link>
           </div>
         </div>
       </div>
