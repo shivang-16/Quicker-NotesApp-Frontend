@@ -35,6 +35,7 @@ const SignUp = () => {
     if(isAuthenticated) return <Navigate to={'/'}/>
      return (
      <>
+     <main id='main-body'>
    {isLoading ? (<Spinner/>) : (
     <div className='login-box'>
     <div className='login-card'>
@@ -56,6 +57,7 @@ const SignUp = () => {
     </div>
   </div>
    )}
+   </main>
   </>
   )
 }

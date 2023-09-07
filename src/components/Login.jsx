@@ -39,6 +39,7 @@ const Login = () => {
 
   return (
    <>
+    <main id='main-body'>
    {isLoading ? (<Spinner/>) : (
     <div className='login-box'>
       <div className='login-card'>
@@ -59,7 +60,7 @@ const Login = () => {
       </div>
     </div>
     )}
-   
+   </main>
    </>
   )
 }

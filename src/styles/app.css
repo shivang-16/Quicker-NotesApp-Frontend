@@ -100,7 +100,6 @@ body{
   .nav-right-content{
     display: flex;
     align-items: center;
-    /* border: 2px solid red; */
   
   }
   .detail-btn{
@@ -111,7 +110,7 @@ body{
     border-radius: 10px;
     background-color: rgb(202, 212, 239);
     background: none;
-    margin-left: 60px;
+    margin-left: 10px;
   }
   .detail-btn:hover{
     background-color: rgb(163, 187, 253);
@@ -373,7 +372,7 @@ justify-content: center;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(79, 79, 79, 0.5);
   z-index: 999;
 }
 
@@ -402,20 +401,40 @@ justify-content: center;
 .modal-content {
   transition: all 0.3s ease-in-out;
 }
-
+.spinner-content{
+  background: none;
+  box-shadow: none;
+  border: none;
+}
 :disabled{
   background-color: gray;
 }
 
 
 @media screen and (max-width: 500px) {
-  .sidebar{
-    /* position: fixed;
-    left: 0; */
-    background-color: white;
-    width: 0px !important;
-    /* display: none; */
+  .burger{
+    display: none;
   }
+  .sidebar{
+    height: 70px;
+    width: 100vw !important;
+    background-color: white;
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    flex-direction: row;
+    box-shadow: 0px -3px 3px rgb(180, 180, 180);
+   
+  }
+  
+ .box2{
+    margin: 0px 0px;
+  }
+  .notes{
+   display: none;
+  }
+ 
+
 
   .addNoteBox{
     width: 92%;
@@ -432,4 +451,17 @@ justify-content: center;
     width: 30%;
    }
  
+}
+
+@media screen and (max-width: 330px) {
+  .brand{
+    display: flex;
+    font-size: 14px;
+  }
+  .logo-img{
+    /* border: 2px solid red; */
+     width: 35px;
+     height: 35px;
+     margin-right: 3px;
+  }
 }
