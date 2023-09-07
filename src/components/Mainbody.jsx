@@ -82,7 +82,7 @@ const Mainbody = () => {
   };
 
   const handleDelete = async (_id) => {
-    confirm("Are you sure want to delete this note");
+    if (window.confirm("Are you sure you want to Logout?")) {
     try {
       await axios.delete(`${server}/notes/${_id}`, {
         withCredentials: true,
@@ -91,6 +91,10 @@ const Mainbody = () => {
     } catch (error) {
       toast.error(error.response.data.message);
     }
+  }
+  else {
+    setIsLoading(false);
+  }
   };
 
   const handleUpdate = (_id) => {

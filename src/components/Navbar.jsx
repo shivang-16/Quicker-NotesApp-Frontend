@@ -36,7 +36,7 @@ const Navbar = () => {
   };
   const navigate = useNavigate();
   const handleLogout = async () => {
-    confirm("Are you sure you want to logout?");
+    if (window.confirm("Are you sure you want to Logout?")) {
     try {
       const { data } = await axios.get(`${server}/users/logout`, {
         withCredentials: true,
@@ -48,7 +48,11 @@ const Navbar = () => {
       toast.error(error.response.data.message);
       setIsAuthenticated(true);
     }
-  };
+  }
+  else {
+    setIsLoading(false);
+  }
+}
 
   const handleLogin = () => {
     setIsLoading(false);
