@@ -1,355 +1,338 @@
 @import url(https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Libre+Baskerville:ital@1&family=Mukta:wght@600&family=Playfair:wght@800&family=Poppins:wght@200&family=Roboto:wght@300;400&display=swap);
 
-*{
-    padding: 0;
-    margin: 0;
-    font-family: "Amazon Ember",Arial,sans-serif;
- 
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Amazon Ember", Arial, sans-serif;
 }
-body{
+body {
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
   background-color: rgb(253, 250, 246);
-  
 }
-.navbar{
-    height: 65px;
-    display: flex;
-    position: absolute;
-    width: 100%;
-    box-shadow: 1px 0px 2px rgb(164, 164, 164);
-  }
-  
-  .nav-left{
-    height: inherit;
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-  }
-  .burger{
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-  .burger:hover{
-    background-color: rgb(241, 241, 241);
-  }
-  .line{
-    border: 1px solid rgb(57, 57, 57);
-    width: 18px;
-    margin: 2px;
-  }
-  .brand{
-    display: flex;
-  }
-  .logo-img{
-     width: 40px;
-     height: 40px;
-     margin-right: 3px;
-  }
-  .logo-img img{
-    width: 100%;
-    height: 100%;
-  }
-  .nav-mid{
-    height: inherit;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50vw;
-    position: relative;
-    margin-left: 50px ;
-  }
-  a{
-    text-decoration: none;
-    color: inherit;
-  }
-  .search-bar{
-    border: none;
-    width: inherit;
-    background-color: rgb(245, 244, 244);
-    margin: 0px 20px 0px 20px; 
-    height: 40px;
-    border-radius: 8px;
-    padding: 0px 0px 0px 10px;
-  }
-  .search-bar:focus{
-    background-color: white;
-   outline: none;
-    box-shadow: 1px 1px 2px black;
-  }
-  .nav-right{
-    height: inherit;
-    position: absolute;
-    right: 0px;
-    display: flex;
-    align-items: center ;
-    justify-content: center;
-    margin-right: 15px;
-  }
-  .nav-right-content{
-    display: flex;
-    align-items: center;
-  
-  }
-  .detail-btn{
-    margin: 3px;
-    padding: 5px 9px 5px 9px;
-    cursor: pointer;
-    border-radius: 10px;
-    background-color: rgb(202, 212, 239);
-    background: none;
-    margin-left: 10px;
-  }
-  .detail-btn:hover{
-    background-color: rgb(163, 187, 253);
-    color: white;
-  }
-  .profile{
-    display: flex;
-    height: 50px;
-    width: 50px;
-    border-radius: 100%;
-    cursor: pointer;
-    align-items: center;
-    font-weight: bold;
-  }
+.navbar {
+  height: 65px;
+  display: flex;
+  position: absolute;
+  width: 100%;
+  box-shadow: 1px 0px 2px rgb(164, 164, 164);
+}
 
+.nav-left {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+.burger {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.burger:hover {
+  background-color: rgb(241, 241, 241);
+}
+.line {
+  border: 1px solid rgb(57, 57, 57);
+  width: 18px;
+  margin: 2px;
+}
+.brand {
+  display: flex;
+}
+.logo-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 3px;
+}
+.logo-img img {
+  width: 100%;
+  height: 100%;
+}
+.nav-mid {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+  position: relative;
+  margin-left: 50px;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.search-bar {
+  border: none;
+  width: inherit;
+  background-color: rgb(245, 244, 244);
+  margin: 0px 20px 0px 20px;
+  height: 40px;
+  border-radius: 8px;
+  padding: 0px 0px 0px 10px;
+}
+.search-bar:focus {
+  background-color: white;
+  outline: none;
+  box-shadow: 1px 1px 2px black;
+}
+.nav-right {
+  height: inherit;
+  position: absolute;
+  right: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+.nav-right-content {
+  display: flex;
+  align-items: center;
+}
+.detail-btn {
+  margin: 3px;
+  padding: 5px 9px 5px 9px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: rgb(202, 212, 239);
+  background: none;
+  margin-left: 10px;
+}
+.detail-btn:hover {
+  background-color: rgb(163, 187, 253);
+  color: white;
+}
+.profile {
+  display: flex;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  cursor: pointer;
+  align-items: center;
+  font-weight: bold;
+}
 
-  /*---------------- Main-Body------------------- */
-  
-  #main-body{
-    height: 91vh;
-    width: 100vw;
-    margin: auto;
-    position: relative;
-    top: 65px;
-    display: flex;
-  }
-  .sidebar{
-    height: 100vh;
-    display: flex;
-    width: 70px;
-    flex-direction: column;
-    transition: width 0.2s ease; 
-    padding-top: 3px;
-    box-shadow: 1px 0px 1px rgb(196, 196, 196);
-    overflow: hidden;
-  }
-  
-  
-  
-  .icon{
-    width: 45px;
-    height: 45px;
-    margin: 8px 0px 0px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 100%;
-    position: relative;
-   
-  }
-  
-  .icon img{
-    width: 20px;
-  }
-  
-  .icon:hover{
-    background-color: rgb(241, 241, 241);
-  }
-  
-  .side-active{
-    background-color: rgb(202, 212, 239);
-  }
-  
-  .side-active:hover{
-    background-color: rgb(202, 212, 239);
-  }
-  .box1{
-   display: inline-block;
-   height: 60px;
-   cursor: pointer;
+/*---------------- Main-Body------------------- */
 
-  }
-  .box2{
-    margin: -25px 0px;
-  }
- 
-  .notes{
-    width: 170px;
-    margin-left: 5px ;
-    padding-left: 15px;
-    height: 45px;
-    position: relative;
-    top: -45px;
-    left: 50px; 
-    display: flex;
-    align-items: center;
-  }
-  .notes:hover{
-    background-color: rgb(237, 237, 237);
-    border-radius: 40px;
-  }
-  .notesArea{
-    width: 100%;
-    overflow: auto;
-  }
-  .addNoteBox{
-    width: 100%;
-    padding-top: 30px;
-    display: flex;
-    flex-direction: column;
-   align-items: center;
-  }
-  .addNote{
-    width: 100%;
-   
-  }
+#main-body {
+  height: 91vh;
+  width: 100vw;
+  margin: auto;
+  position: relative;
+  top: 65px;
+  display: flex;
+}
+.sidebar {
+  height: 100vh;
+  display: flex;
+  width: 70px;
+  flex-direction: column;
+  transition: width 0.2s ease;
+  padding-top: 3px;
+  box-shadow: 1px 0px 1px rgb(196, 196, 196);
+  overflow: hidden;
+}
 
+.icon {
+  width: 45px;
+  height: 45px;
+  margin: 8px 0px 0px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  position: relative;
+}
 
-  .textarea{
-    width: 93%;
-    border-radius: 8px;
-    padding: 12px 10px ;
-    outline: none;
-    border: none;
-    box-shadow: 0px 1px 3px black;
-    margin: 5px;
-    font-size: 17px;
-  }
-  .addNote_title{
-    width: 100%;
-    display: flex;
-    
-   }
-  .input-tag{
-    width: 20%;
-   }
- 
-  
-  .notes-card-area{   
-    padding: 0px auto;
-    width: 74%;
-    margin: 30px auto;
-    
-   display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    align-items: start;
-    justify-content: center;
-  
-  }
-  .notes-card-wrapper{
-    border: 2px solid rgb(0, 60, 255);
-    display: inline;
-   display: flex;
-   flex-wrap: wrap;
-   align-items: flex-start;
-    margin: auto;
-    justify-content: center;
-  }
-  .note-card{
-    box-shadow: 0px 0px 2px rgb(170, 170, 170);
-    padding: 10px 20px 50px 20px;
-    border-radius: 10px;
-    
-    display: inline-block;
-    width: 298px;
-    margin: 10px;
-    position: relative;
-    background-color:white;
-    
-  }
-  .note-card h3{
-    border-bottom: 1px solid rgb(218, 218, 218);
-    margin-bottom: 8px;
-    padding-bottom: 6px;
-  }
+.icon img {
+  width: 20px;
+}
 
-  .tag{
-   background-color: rgb(84, 103, 171);
-   border-radius: 10px;
-   padding: 2px 8px ;
-   color: white;
-   display: inline-block;
-   position: absolute;
-   bottom: 8px;
-   left: 16px;
-  }
-  .card-btn{
-    border: none;
-    background: none;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    cursor: pointer;
-  }
-  .edit-btn{
-    right: 35px;
-  }
-  .profile-page-area{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-align-items: center;
-justify-content: center;
-  }
-  .profile-section {
-    position: relative;
-    top: -100px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 50px 0px ;
-    text-align: center;
-    max-width: 400px;
-    width: 100%;
-  }
-  
-  .profile-section h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .profile-section h4 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #666;
-  }
-  
-  .profile-section p {
-    font-size: 14px;
-    color: #888;
-  }
+.icon:hover {
+  background-color: rgb(241, 241, 241);
+}
 
+.side-active {
+  background-color: rgb(202, 212, 239);
+}
 
-  /* ------------ Login page ----------------- */
-  .signup-box{
-    border: 2px solid red;
-  }
+.side-active:hover {
+  background-color: rgb(202, 212, 239);
+}
+.box1 {
+  display: inline-block;
+  height: 60px;
+  cursor: pointer;
+}
+.box2 {
+  margin: -25px 0px;
+}
 
-  
-  ::-webkit-scrollbar{
-    width: 5px;
-    
-  }
+.notes {
+  width: 170px;
+  margin-left: 5px;
+  padding-left: 15px;
+  height: 45px;
+  position: relative;
+  top: -45px;
+  left: 50px;
+  display: flex;
+  align-items: center;
+}
+.notes:hover {
+  background-color: rgb(237, 237, 237);
+  border-radius: 40px;
+}
+.notesArea {
+  width: 100%;
+  overflow: auto;
+  padding-bottom: 50px;
+}
+.addNoteBox {
+  width: 100%;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.addNote {
+  width: 100%;
+}
 
-  ::-webkit-scrollbar-thumb{
-    width: 10px;
-    background-color: rgb(172, 172, 172);
-    border-radius: 10px;
-  }
+.textarea {
+  width: 93%;
+  border-radius: 8px;
+  padding: 12px 10px;
+  outline: none;
+  border: none;
+  box-shadow: 0px 1px 3px black;
+  margin: 5px;
+  font-size: 17px;
+}
+.addNote_title {
+  width: 100%;
+  display: flex;
+}
+.input-tag {
+  width: 20%;
+}
 
-  /* CSS for the modal container */
+.notes-card-area {
+  padding: 0px auto;
+  width: 74%;
+  margin: 30px auto;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: center;
+}
+.notes-card-wrapper {
+  border: 2px solid rgb(0, 60, 255);
+  display: inline;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: auto;
+  justify-content: center;
+}
+.note-card {
+  box-shadow: 0px 0px 2px rgb(170, 170, 170);
+  padding: 10px 20px 50px 20px;
+  border-radius: 10px;
+
+  display: inline-block;
+  width: 298px;
+  margin: 10px;
+  position: relative;
+  background-color: white;
+}
+.note-card h3 {
+  border-bottom: 1px solid rgb(218, 218, 218);
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+}
+
+.tag {
+  background-color: rgb(84, 103, 171);
+  border-radius: 10px;
+  padding: 2px 8px;
+  color: white;
+  display: inline-block;
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+.card-btn {
+  border: none;
+  background: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+.edit-btn {
+  right: 35px;
+}
+.profile-page-area {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-section {
+  position: relative;
+  top: -100px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 50px 0px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.profile-section h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.profile-section h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.profile-section p {
+  font-size: 14px;
+  color: #888;
+}
+
+/* ------------ Login page ----------------- */
+.signup-box {
+  border: 2px solid red;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 10px;
+  background-color: rgb(172, 172, 172);
+  border-radius: 10px;
+}
+
+/* CSS for the modal container */
 .modal-container {
   display: flex;
   justify-content: center;
@@ -387,22 +370,21 @@ justify-content: center;
 .modal-content {
   transition: all 0.3s ease-in-out;
 }
-.spinner-content{
+.spinner-content {
   background: none;
   box-shadow: none;
   border: none;
 }
-:disabled{
+:disabled {
   background-color: gray;
   opacity: 0.3;
 }
 
-
 @media screen and (max-width: 500px) {
-  .burger{
+  .burger {
     display: none;
   }
-  .sidebar{
+  .sidebar {
     height: 70px;
     width: 100vw !important;
     background-color: white;
@@ -411,43 +393,38 @@ justify-content: center;
     bottom: 0;
     flex-direction: row;
     box-shadow: 0px -3px 3px rgb(180, 180, 180);
-   
   }
-  
- .box2{
+
+  .box2 {
     margin: 0px 0px;
   }
-  .notes{
-   display: none;
+  .notes {
+    display: none;
   }
- 
 
-
-  .addNoteBox{
+  .addNoteBox {
     width: 92%;
     margin: auto;
-   
   }
-  .textarea{
-    padding: 8px 8px ;
+  .textarea {
+    padding: 8px 8px;
     margin: 3px;
     font-size: 15px;
   }
- 
-  .input-tag{
+
+  .input-tag {
     width: 30%;
-   }
- 
+  }
 }
 
 @media screen and (max-width: 330px) {
-  .brand{
+  .brand {
     display: flex;
     font-size: 14px;
   }
-  .logo-img{
-     width: 35px;
-     height: 35px;
-     margin-right: 3px;
+  .logo-img {
+    width: 35px;
+    height: 35px;
+    margin-right: 3px;
   }
 }

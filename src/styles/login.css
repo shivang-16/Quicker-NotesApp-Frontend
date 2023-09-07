@@ -1,81 +1,79 @@
-
-
-.login-box{
-    /* border: 2px solid red; */
-    width: 100%;
-    padding: 0px 20px;
+.login-box {
+  /* border: 2px solid red; */
+  width: 100%;
+  padding: 0px 20px;
 }
-.login-card{
-    /* border: 2px solid blue; */
-    margin: 80px auto;
-    width: 500px;
-    padding: 20px 10px;
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 0px 2px 3px rgb(141, 141, 141);
+.login-card {
+  /* border: 2px solid blue; */
+  margin: 80px auto;
+  width: 500px;
+  padding: 20px 10px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0px 2px 3px rgb(141, 141, 141);
 }
-.login-header{
-    text-align: center;
-    margin: 15px 0px;
+.login-header {
+  text-align: center;
+  margin: 15px 0px;
 }
-.login-content{
-    /* border: 2px solid red; */
-    margin: 30px 0px;
+.login-content {
+  /* border: 2px solid red; */
+  margin: 30px 0px;
 }
-.login-content form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* padding: 30px 0px; */
+.login-content form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 30px 0px; */
 }
-.login-content input{
-    width: 40px;
-    border-radius: 10px;
-    border: 2px solid rgb(165, 165, 165);
-    width: 70%;
-    padding: 10px 10px;
-    margin: 10px 0px;
-    font-size: 16px;
+.login-content input {
+  width: 40px;
+  border-radius: 10px;
+  border: 2px solid rgb(165, 165, 165);
+  width: 70%;
+  padding: 10px 10px;
+  margin: 10px 0px;
+  font-size: 16px;
 }
 
-.signup-button{
-    /* border: 1px solid red; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0px;
+.signup-button {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0px;
 }
-.signup-button p{
-    font-weight: bold;
+.signup-button p {
+  font-weight: bold;
 }
-.login-btn{
-    padding: 10px 15px;
-    border-radius: 10px;
-    margin: 0px 5px;
-    background-color: rgb(33, 122, 223);
-    color: white;
-    border: none;
-    box-shadow: 0px 2px 2px gray;
-    margin-top: 10px;
+.login-btn {
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin: 0px 5px;
+  background-color: rgb(33, 122, 223);
+  color: white;
+  border: none;
+  box-shadow: 0px 2px 2px gray;
+  margin-top: 10px;
 }
-.login-btn:hover{
-    cursor: pointer;
+.login-btn:hover {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 530px) {
-    .login-box{
-        overflow: hidden;
-    }
-    .login-card{
-        width: 100%;
-        padding: 0px 5px;
-    }
-    .login-content input{
-        padding: 8px 15px;
-        margin: 8px 0px;
-        font-size: 15px;
-    }
-    .login-btn{
-        padding: 8px 15px;
-    }
+  .login-box {
+    overflow: hidden;
+  }
+  .login-card {
+    width: 100%;
+    padding: 0px 5px;
+  }
+  .login-content input {
+    padding: 8px 15px;
+    margin: 8px 0px;
+    font-size: 15px;
+  }
+  .login-btn {
+    padding: 8px 15px;
+  }
 }

@@ -1,12 +1,12 @@
-import React, { useContext, useEffect } from 'react'
-import { Context, server } from '../main'
-import { useNavigate } from 'react-router-dom'
-import toast from 'react-hot-toast'
-import axios from 'axios'
-import Spinner from './Spinner'
-import Navbar from './Navbar'
-import Sidebar from './Sidebar'
-import profileImg from '../img/profile.png'
+import React, { useContext, useEffect } from "react";
+import { Context, server } from "../main";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import axios from "axios";
+import Spinner from "./Spinner";
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
+import profileImg from "../img/profile.png";
 
 const Profile = () => {
   const {
@@ -15,56 +15,55 @@ const Profile = () => {
     setIsLoading,
     isAuthenticated,
     setIsAuthenticated,
-    refresh, 
-    setRefresh
-  } = useContext(Context)
+    refresh,
+    setRefresh,
+  } = useContext(Context);
 
-   const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleDeleteUser = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     if (window.confirm("Are you sure you want to delete your account?")) {
       try {
-        const {data} = await axios.delete(`${server}/users/${profile._id}`, {
+        const { data } = await axios.delete(`${server}/users/${profile._id}`, {
           withCredentials: true,
-        })
-        setIsLoading(false)
-        setRefresh(prev=>!prev)
-        navigate('/login')
-        setIsAuthenticated(false)
-        toast.success(data.message)
+        });
+        setIsLoading(false);
+        setRefresh((prev) => !prev);
+        navigate("/login");
+        setIsAuthenticated(false);
+        toast.success(data.message);
       } catch (error) {
-        toast.error("Error")
-        setIsLoading(false)
-        setIsAuthenticated(true) 
+        toast.error("Error");
+        setIsLoading(false);
+        setIsAuthenticated(true);
       }
     } else {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
-   
+  };
+
   useEffect(() => {
-  //  handleDeleteUser()
-  }, [refresh])
-  
-  
+    //  handleDeleteUser()
+  }, [refresh]);
+
   return (
     <>
       <Navbar />
-      <main id='main-body'>
+      <main id="main-body">
         <Sidebar />
 
-        <div className='profile-page-area'>
+        <div className="profile-page-area">
           {isLoading ? (
             <Spinner />
           ) : profile ? (
-            <div className='profile-section'>
-              <img src={profileImg} alt='' />
+            <div className="profile-section">
+              <img src={profileImg} alt="" />
               <h3>{profile.name}</h3>
               <h4>{profile.email}</h4>
               <p>{profile.createdAt}</p>
 
               <button
-                className='login-btn'
+                className="login-btn"
                 disabled={isLoading || !isAuthenticated}
                 onClick={handleDeleteUser}
               >
@@ -77,7 +76,7 @@ const Profile = () => {
         </div>
       </main>
     </>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;
