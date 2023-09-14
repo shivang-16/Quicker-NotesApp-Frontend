@@ -46,7 +46,9 @@ const Login = () => {
     <>
       <main id="main-body">
         {isLoading ? (
+          <div className="modal-container ">
           <Spinner />
+          </div>
         ) : (
           <div className="login-box">
             <div className="login-card">

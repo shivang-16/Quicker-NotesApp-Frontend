@@ -136,6 +136,10 @@ const Mainbody = () => {
     setTag("");
   };
 
+  const handleLogin = () => {
+    setIsLoading(false);
+  };
+  
   useEffect(() => {
     getNotes();
   }, [refresh]);
@@ -205,7 +209,7 @@ const Mainbody = () => {
             </form>
           </div>
           {loader ? (
-            <Spinner />
+            <Spinner/>
           ) : (
             <div className="notes-card-area">
               {isAuthenticated === true ? (
@@ -243,7 +247,7 @@ const Mainbody = () => {
                 >
                   <h4>Login to your account to see your notes</h4>
                   <Link to="/login">
-                    <button className="detail-btn">Login</button>
+                    <button className="detail-btn" onClick={handleLogin}>Login</button>
                   </Link>
                 </div>
               )}

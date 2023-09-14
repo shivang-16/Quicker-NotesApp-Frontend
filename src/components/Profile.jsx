@@ -54,7 +54,9 @@ const Profile = () => {
 
         <div className="profile-page-area">
           {isLoading ? (
-            <Spinner />
+          <div className="modal-container ">
+          <Spinner />
+          </div>
           ) : profile ? (
             <div className="profile-section">
               <img src={profileImg} alt="" />
