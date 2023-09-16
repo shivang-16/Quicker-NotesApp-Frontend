@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 
-export const server = "https://quicker-notes-app-backend.vercel.app/";
+export const server = "https://quicker-notes-app-backend.vercel.app/api/v1";
 
 export const Context = createContext({ isAuthenticated: false });
 const Appwrapper = () => {
